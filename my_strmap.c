@@ -107,7 +107,7 @@ void sm_dealloc(strMap *map){
     Bucket *bucket = map->buckets, *tmp_bucket;
     // deallocate the collision trees
     for(i = 0; i < map->count; i++){
-        tmp_bucket = bucket + sizeof(bucket*);
+        tmp_bucket = bucket + sizeof(Bucket*);
         rb_dealloc(bucket->strings);
         bucket = tmp_bucket;
     }
