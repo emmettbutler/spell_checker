@@ -1,0 +1,8 @@
+An efficient spell-checker written in C for class.
+
+Uses a dictionary stored as a hash table with red-black trees handling collisions
+
+To run, use "make", then
+./speller words.txt texts/tolstoy.txt
+texts contains a bunch of books,
+words is a huge dictionary
