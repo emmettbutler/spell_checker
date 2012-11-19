@@ -205,12 +205,13 @@ void rb_delete(rb_node *tree, char *delVal){
 
 // traverse and deallocate all nodes
 void rb_dealloc(rb_node *tree){
-    if(tree->left != NULL){
+    if(tree && tree->left != NULL){
         rb_dealloc(tree->left);
     }
-    if(tree->right != NULL){
+    if(tree && tree->right != NULL){
         rb_dealloc(tree->right);
     }
+    if(tree == NULL) return;
     free(tree->value);
     free(tree);
 }
