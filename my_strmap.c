@@ -104,10 +104,12 @@ int sm_get_count(strMap *map){
 
 void sm_dealloc(strMap *map){
     int i;
-    Bucket *bucket = map->buckets;
+    Bucket *bucket = map->buckets, *tmp_bucket;
     // deallocate the collision trees
     for(i = 0; i < map->count; i++){
+        tmp_bucket = bucket + sizeof(bucket*);
         rb_dealloc(bucket->strings);
+        bucket = tmp_bucket;
     }
     // deallocate the rest of the table
     free(map->buckets);
