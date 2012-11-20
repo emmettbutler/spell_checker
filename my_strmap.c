@@ -22,6 +22,8 @@ strMap *sm_new(unsigned int capacity){
     bucket = map->buckets;
     for(i = 0; i < map->count; i++){
         bucket->count = 0;
+        bucket->strings = NULL;
+        bucket++;
     }
 
     return map;

@@ -33,7 +33,7 @@ rb_node *uncle(rb_node *node){
 
 rb_node *rb_insert(rb_node *tree, char *insVal){
     // standard binary tree insert algorithm
-    if(tree == NULL){
+    if(tree == NULL || tree->value == NULL){
         tree = rb_create_tree(insVal);
         return;
     }
@@ -58,6 +58,7 @@ rb_node *rb_insert(rb_node *tree, char *insVal){
             insertion_invariants(tree->right);
         }
     }
+
     // make sure to return a pointer to the new root
     // adds no complexity
     return get_root(tree);
@@ -93,11 +94,6 @@ void insertion_invariants(rb_node *n){
                 g = grandparent(n);
                 n->parent->red = 0;
                 g->red = 1;
-                if(n == n->parent->left){
-                    rotate_right(g);
-                } else {
-                    rotate_left(g);
-                }
             }
         }
     }
@@ -122,6 +118,7 @@ void rotate_left(rb_node *n){
             n->parent->left = q;
     }
 
+    // commenting this line out fixes a segfault
     n->parent = q;
 }
 
