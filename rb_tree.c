@@ -221,7 +221,7 @@ rb_node *get_root(rb_node *n){
     if(n->parent == NULL){
         return n;
     } else {
-        get_root(n->parent);
+        return get_root(n->parent);
     }
 }
 
