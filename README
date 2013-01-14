@@ -1,4 +1,4 @@
-An efficient spell-checker written in C for class.
+An efficient spell-checker
 
 Uses a dictionary stored as a hash table with red-black trees handling collisions
 
